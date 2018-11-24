@@ -8,6 +8,7 @@ import Header from './Header'
 import Action from './Action'
 import OptionModal from './OptionModal'
 
+const uuid = require('uuid/v4')
 
 class IndecisionApp extends React.Component {
    state = {
@@ -31,13 +32,28 @@ class IndecisionApp extends React.Component {
     }
 
     handleAddOption = (option) => {
-        if(!option) {
+         if(!option) {
             return 'Enter Valid value to add'
-        } else if(this.state.options.indexOf(option) > -1)  {
-            return 'This option already exists '
-        } 
+        // } else if(this.state.options.indexOf(option) > -1)  {
+        //     return 'This option already exists '
+         } 
+        const tempOption = {
+            option: option,
+            completed: false,
+            id: uuid()
+        }
+
+       // console.log(tempOption)
+        const optionsJSON = localStorage.getItem('options')
+       // console.log("1--- " + optionsJSON)
+        const options1 = optionsJSON ? JSON.parse(optionsJSON) : []
+
+        options1.push(tempOption)
+
         this.setState((prevState) => (
-            {options: prevState.options.concat(option)}) 
+            {
+                options: options1
+            }) 
         )
     }
     handleDeleteOption = (optionToRemove) => {
@@ -47,9 +63,15 @@ class IndecisionApp extends React.Component {
         )}))
     }
 
+    handleRenderOptions = () => {
+
+        const optionsJSON = localStorage.getItem('options')
+         const options1 = optionsJSON ? JSON.parse(optionsJSON) : []
+    }
+
     componentDidMount() {
         try {
-            console.log('fetching date')
+            console.log('fetching data')
             const optionsJSON = localStorage.getItem('options')
             const options = JSON.parse(optionsJSON)
             if(options) {
@@ -70,7 +92,7 @@ class IndecisionApp extends React.Component {
     }
     
     componentWillUnmount() {
-        console.log('upnmount ')
+        console.log('unmount ')
     }
 
    
@@ -89,6 +111,7 @@ class IndecisionApp extends React.Component {
                 <div className="widget">
                 <Options 
                 options={this.state.options} 
+                handleRenderOptions={this.handleRenderOptions}
                 handleDeleteOptions={this.handleDeleteOptions}
                 handleDeleteOption={this.handleDeleteOption}
             />
@@ -108,8 +131,6 @@ class IndecisionApp extends React.Component {
 IndecisionApp.defaultProps = {
     options:[]
 }
-
-
 
 
 export default IndecisionApp
