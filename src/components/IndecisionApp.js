@@ -50,8 +50,7 @@ class IndecisionApp extends React.Component {
 
         options1.push(tempOption)
 
-        this.setState((prevState) => (
-            {
+        this.setState((prevState) => ({
                 options: options1
             }) 
         )
@@ -64,7 +63,7 @@ class IndecisionApp extends React.Component {
     }
 
     handleRenderOptions = () => {
-
+        console.log("Render ")
         const optionsJSON = localStorage.getItem('options')
          const options1 = optionsJSON ? JSON.parse(optionsJSON) : []
     }
@@ -119,7 +118,6 @@ class IndecisionApp extends React.Component {
             handleAddOption={this.handleAddOption}/>
                 
                 </div>
-                
                 <OptionModal selectedOption={this.state.selectedOption}
                 handleClearSelectOption={this.handleClearSelectOption} />
                 </div>

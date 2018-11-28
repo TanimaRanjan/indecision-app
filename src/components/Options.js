@@ -15,37 +15,38 @@ const Options = (props) =>
                 {props.options.length === 0 && 
                         <p className="widget__message">Please add an option to start</p>}
                 {
-                   
-    
+                    // console.log(props.options)
+                    // <Option 
+                    // options={props.options}
+                    // handleRenderOptions={props.handleRenderOptions}
+                    // />
 
-                    //console.log(props.options)
+                    // Object.keys(props.options).map((option, index) => {
+                    //     console.log(option+index)
+                    // })
 
+                    console.log(Object.keys(props.options))
                     // Object.keys(props.options).map((option, index) => {
                     //     <Option key={"text"}
                     //     optionText="Text"
                     //     handleDeleteOptions={props.handleDeleteOptions} 
                     // />
                     // })
-                    
                     //  props.options.forEach((option) => {
                     //     console.log(option.option)
-
                     //      <Option key={option.id} 
                     //          optionText={option.option} 
                     //          handleDeleteOption={props.handleDeleteOption}
                     //          />
                     // })
-                    
                     // props.options.map((option, index) => 
                     // <Option 
                     //     key={uuid()} optionText={option}
                     //     count={index+1}
                     //     handleDeleteOption={props.handleDeleteOption}
                     //     />
-                    
                     // )
                 }
             </div>
         )
     export default Options
-

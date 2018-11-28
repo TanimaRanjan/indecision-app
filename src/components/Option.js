@@ -2,9 +2,7 @@ import React from 'react'
 
 const Option = (props) => 
      (
-         
         <div className="option">
-        {console.log("In option")}
             <p className="option__text">ADDD ITEM</p>
             <button 
                 className="button button--link"
@@ -15,6 +13,5 @@ const Option = (props) =>
             
         </div>
     )
-
 
 export default Option ; 
