@@ -2,7 +2,6 @@ import React from 'react'
 import ReactDOM from 'react-dom'
 
 import AddOption from './AddOption'
-// import Option from './components/Option'
 import Options from './Options'
 import Header from './Header'
 import Action from './Action'
